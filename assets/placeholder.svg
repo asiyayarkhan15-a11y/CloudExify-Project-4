@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Dish image unavailable">
+  <rect width="400" height="300" fill="#1e1e24"/>
+  <g fill="none" stroke="#c9a227" stroke-width="2" opacity=".45">
+    <circle cx="200" cy="140" r="52"/>
+    <circle cx="200" cy="140" r="36"/>
+    <path d="M126 108 v64 M126 108 c-7 0 -12 6 -12 14 v10 c0 6 5 10 12 10"/>
+    <path d="M274 108 c10 6 14 18 10 30 -2 7 -6 10 -10 10 v24"/>
+  </g>
+  <text x="200" y="232" font-family="Georgia, serif" font-size="14" fill="#6f6b62"
+        text-anchor="middle" letter-spacing="3">MAISON NOIR</text>
+</svg>
