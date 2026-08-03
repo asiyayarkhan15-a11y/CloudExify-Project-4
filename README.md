@@ -4,15 +4,13 @@ CloudExify Summer Internship 2026 · Web Development Month 2 · **Project 4**
 
 | | |
 |---|---|
-| **Name** | _<your name>_ |
-| **Registration number** | _CX-2026-XXXX_ |
+| **Name** | Asiya Khan |
+| **Registration number** | CX-INT-2026-GEN-0481 |
 | **Restaurant concept** | **Fine Dining** — dark elegant background, gold accents, serif headings, upscale menu |
-| **Live link** | _<paste your Vercel URL here>_ |
-| **Admin login (for PM testing)** | `admin@maisonnoir.com` / `_<password>_` |
-| **Customer login (for PM testing)** | `customer@maisonnoir.com` / `_<password>_` |
-
-> Fill in the five blanks above before you submit. The PM needs the admin
-> credentials to grade the admin panel.
+| **Live link** | https://cloud-exify-project-4.vercel.app |
+| **Repository** | https://github.com/asiyayarkhan15-a11y/CloudExify-Project-4 |
+| **Admin login (for PM testing)** | `admin@maisonnoir.com` / `MaisonNoir#Admin2026` |
+| **Customer login (for PM testing)** | `guest@maisonnoir.com` / `MaisonNoir#Guest2026` |
 
 ---
 
