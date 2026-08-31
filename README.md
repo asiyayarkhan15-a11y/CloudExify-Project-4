@@ -59,8 +59,9 @@ via Supabase Realtime.
 
 ## Screenshots
 
-Eleven captures of the live app are in [`screenshots/`](screenshots/), listed in
-[`screenshots/README.md`](screenshots/README.md).
+Seventeen captures of the live app are in [`screenshots/`](screenshots/), listed
+in [`screenshots/README.md`](screenshots/README.md) — eleven desktop and six
+taken on an iPhone, showing the Bootstrap grid collapsing cleanly.
 
 `08-admin-dashboard-pending.png` and `09-admin-status-updated.png` are a
 before/after pair: the same order moves from `Pending` to `Preparing` and the
@@ -86,7 +87,7 @@ before/after pair: the same order moves from `Pending` to `Preparing` and the
 │   ├── orders.js              place order, order history, realtime status
 │   └── admin.js               dashboard stats, order table, menu CRUD, CSV export
 ├── assets/                    13 dish photos, logo, image placeholder
-├── screenshots/               11 captures of the live app
+├── screenshots/               17 captures — desktop and mobile
 ├── supabase/
 │   ├── schema.sql             tables, trigger, RLS policies, realtime
 │   ├── seed.sql               the 18 menu items
