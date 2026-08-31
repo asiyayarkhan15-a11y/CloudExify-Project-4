@@ -9,29 +9,32 @@ CloudExify Summer Internship 2026 · Web Development Month 2 · **Project 4**
 | **Restaurant concept** | **Fine Dining** — dark elegant background, gold accents, serif headings, upscale menu |
 | **Live link** | https://cloud-exify-project-4.vercel.app |
 | **Repository** | https://github.com/asiyayarkhan15-a11y/CloudExify-Project-4 |
-| **Admin login (for PM testing)** | `admin@maisonnoir.com` / `MaisonNoir#Admin2026` |
-| **Customer login (for PM testing)** | `guest@maisonnoir.com` / `MaisonNoir#Guest2026` |
+| **Admin login** | `admin@maisonnoir.com` / `MaisonNoir#Admin2026` |
+| **Customer login** | `guest@maisonnoir.com` / `MaisonNoir#Guest2026` |
+
+> **Note for the PM:** this runs on Supabase's free tier, which pauses a project
+> after a period of inactivity. If the menu doesn't load, the project just needs
+> resuming — message me and I'll restore it in a minute.
 
 ---
 
-## What this is
+## What it does
 
-A working ordering system with two separate experiences backed by one Supabase
-database:
+An ordering system with two separate experiences on one Supabase database.
 
-- **Customer panel** (`index.html`) — browse the menu, filter, search, sort,
-  build a cart, place an order, and watch its status change.
-- **Admin panel** (`admin.html`) — live stats, every order with a status
-  dropdown, and full create/edit/delete control over the menu.
+**Customer panel** — browse 18 dishes, filter by category, search by name, sort
+by price, build a cart that survives a refresh, place an order, and follow its
+status.
 
-Orders placed by a customer appear in the admin dashboard immediately, and a
-status change made by the admin appears on the customer's screen without a
-refresh (Supabase Realtime).
+**Admin panel** — four live stat cards, every order with a status dropdown, and
+full create / edit / delete control over the menu.
 
-## Tech stack
+An order placed by a customer appears in the admin dashboard immediately. A
+status change made by the admin reaches the customer's screen without a refresh,
+via Supabase Realtime.
 
-Bootstrap 5.3 (CDN) · Vanilla JavaScript (no build step) · Supabase (Auth +
-PostgreSQL + Row Level Security + Realtime) · Deployed on Vercel.
+**Stack:** Bootstrap 5.3 (CDN) · vanilla JavaScript, no build step · Supabase
+(Auth + PostgreSQL + Row Level Security + Realtime) · deployed on Vercel.
 
 ---
 
@@ -41,114 +44,114 @@ PostgreSQL + Row Level Security + Realtime) · Deployed on Vercel.
 |---|---|
 | **Supabase Auth** | [`js/auth.js`](js/auth.js) — `handleRegister`, `handleLogin`, `handleLogout` |
 | **Live database orders** | [`js/orders.js`](js/orders.js) `placeOrder()` → [`js/admin.js`](js/admin.js) `loadAllOrders()` |
-| **Role-based access** | `requireAdmin()` in [`js/auth.js`](js/auth.js) + RLS policies in [`supabase/schema.sql`](supabase/schema.sql) |
-| **Order status management** | `updateOrderStatus()` in [`js/admin.js`](js/admin.js), Pending → Preparing → Ready |
+| **Role-based access** | `requireAdmin()` in [`js/auth.js`](js/auth.js), enforced by RLS policies in [`supabase/schema.sql`](supabase/schema.sql) |
+| **Order status management** | `updateOrderStatus()` in [`js/admin.js`](js/admin.js) — Pending → Preparing → Ready |
 
 ## Bonus challenges completed
 
-- ✅ Toast notification when an item is added to the cart
-- ✅ Sort menu by price (low→high / high→low)
-- ✅ Real-time order status updates via Supabase Realtime
-- ✅ Admin can toggle item availability on/off live
-- ✅ Export orders to CSV from the admin panel
+- Toast notification when an item is added to the cart
+- Sort menu by price, low→high and high→low
+- Real-time order status updates via Supabase Realtime
+- Admin can toggle item availability on and off live
+- Export all orders to CSV from the admin panel
+
+---
+
+## Screenshots
+
+Eleven captures of the live app are in [`screenshots/`](screenshots/), listed in
+[`screenshots/README.md`](screenshots/README.md).
+
+`08-admin-dashboard-pending.png` and `09-admin-status-updated.png` are a
+before/after pair: the same order moves from `Pending` to `Preparing` and the
+*Pending Orders* stat card recalculates from 1 to 0.
 
 ---
 
 ## Project structure
 
 ```
-restaurant-app/
-├── index.html            user panel — menu, cart, order history
-├── admin.html            admin panel — stats, orders, menu management
-├── login.html            shared login page
-├── register.html         customer registration
+├── index.html                 customer panel — menu, cart, order history
+├── admin.html                 admin panel — stats, orders, menu management
+├── login.html                 shared login page
+├── register.html              customer registration
 ├── css/
-│   └── style.css         fine-dining theme (dark + gold)
+│   └── style.css              fine-dining theme (dark + gold)
 ├── js/
-│   ├── supabase.js       client init + shared helpers (money, toast, escape)
-│   ├── auth.js           login, register, logout, role check, page bootstrap
-│   ├── menu.js           fetch + render menu, filter, search, sort
-│   ├── cart.js           cart logic, persisted to sessionStorage
-│   ├── orders.js         place order, order history, realtime status
-│   └── admin.js          dashboard stats, order table, menu CRUD, CSV export
-├── assets/
-│   ├── logo.svg
-│   └── placeholder.svg   fallback for any dish image that fails to load
+│   ├── boot.js                startup guard — surfaces load errors
+│   ├── supabase.js            client init + shared helpers (money, toast, escape)
+│   ├── auth.js                login, register, logout, role check, page bootstrap
+│   ├── menu.js                fetch + render menu, filter, search, sort
+│   ├── cart.js                cart logic, persisted to sessionStorage
+│   ├── orders.js              place order, order history, realtime status
+│   └── admin.js               dashboard stats, order table, menu CRUD, CSV export
+├── assets/                    13 dish photos, logo, image placeholder
+├── screenshots/               11 captures of the live app
 ├── supabase/
-│   ├── schema.sql        tables, trigger, RLS policies, realtime  ← run first
-│   ├── seed.sql          18 starter dishes                        ← run second
-│   └── make-admin.sql    promote an account to admin              ← run third
+│   ├── schema.sql             tables, trigger, RLS policies, realtime
+│   ├── seed.sql               the 18 menu items
+│   ├── make-admin.sql         promote an account to admin
+│   ├── rescale-pkr.sql        PKR pricing + non-alcoholic drinks menu
+│   └── fix-images.sql         point dishes at the local photos
 └── README.md
 ```
 
 ---
 
-## Setup — from zero to running
+## Running it from scratch
 
-### 1. Create the Supabase project
+**1. Create a Supabase project** at [supabase.com](https://supabase.com).
 
-1. Go to [supabase.com](https://supabase.com) → **New Project**.
-2. Pick a name, a strong database password, and the region closest to you.
-3. Wait ~2 minutes for it to finish provisioning.
+**2. Copy your credentials.** Project Settings → API. Paste the **Project URL**
+and **anon public** key into the top of [`js/supabase.js`](js/supabase.js).
 
-### 2. Copy your credentials into the code
+> Only the **anon public** key belongs in frontend code. The `service_role` key
+> bypasses every security policy and must never be committed.
 
-**Project Settings → API**, then copy:
+**3. Turn off email confirmation.** Authentication → Sign In / Providers →
+Email → **Confirm email** off. With it on, a new account has no session until
+the user clicks a link in their inbox.
 
-- **Project URL** → paste over `SUPABASE_URL` in [`js/supabase.js`](js/supabase.js)
-- **anon public** key → paste over `SUPABASE_ANON_KEY`
+**4. Create the tables.** SQL Editor → run [`supabase/schema.sql`](supabase/schema.sql),
+then [`supabase/seed.sql`](supabase/seed.sql).
 
-> ⚠️ Only ever use the **anon public** key here. The `service_role` key must
-> never appear in frontend code — it bypasses every security policy.
+**5. Register two accounts** through `register.html`, then run
+[`supabase/make-admin.sql`](supabase/make-admin.sql) to promote one to admin.
 
-### 3. Turn off email confirmation (for testing)
+**6. Serve it over HTTP** — VS Code's Live Server, or any static server. Opening
+the files directly with `file://` breaks auth, because Supabase needs a real
+origin to store the session.
 
-**Authentication → Sign In / Providers → Email** → turn **Confirm email**
-**off**, and Save.
-
-With it on, a new account has no session until the user clicks a link in their
-inbox, so your PM can't register and order in one go. The app handles both
-cases, but "off" is what you want for grading.
-
-### 4. Create the tables
-
-**SQL Editor → New query** → paste all of
-[`supabase/schema.sql`](supabase/schema.sql) → **Run**.
-
-Then do the same with [`supabase/seed.sql`](supabase/seed.sql) to load the
-18 starter dishes.
-
-### 5. Create your two test accounts
-
-Open `register.html` and register twice:
-
-- `customer@maisonnoir.com` — leave as a customer
-- `admin@maisonnoir.com` — this one becomes the admin
-
-Then open [`supabase/make-admin.sql`](supabase/make-admin.sql), change the
-email if you used a different one, and **Run** it. Sign out and back in — you
-should land on the dashboard.
-
-### 6. Run it locally
-
-Open the folder in VS Code and use the **Live Server** extension (right-click
-`index.html` → *Open with Live Server*).
-
-> Don't open the file directly with `file://` — Supabase Auth needs a real
-> `http://` origin to store its session.
+**7. After deploying,** add the live URL to Supabase → Authentication → URL
+Configuration, as both **Site URL** and a **Redirect URL** ending in `/**`.
 
 ---
 
-## Deploying to Vercel
+## Notes on the implementation
 
-1. Push this folder to a GitHub repo named `cloudexify-web-p4-yourname`.
-2. [vercel.com](https://vercel.com) → **Add New → Project** → import the repo.
-3. Framework preset: **Other**. No build command, no output directory.
-4. **Deploy** → you get `yourname-restaurant.vercel.app`.
-5. Back in Supabase: **Authentication → URL Configuration** → set **Site URL**
-   to your Vercel URL and add `https://your-app.vercel.app/**` to
-   **Redirect URLs**.
-6. Open the live link in an **incognito window** and run the checklist below.
+**Localised for Pakistan.** Prices are in PKR at levels an upscale restaurant in
+Karachi would actually charge — PKR 550 for an espresso, PKR 8,500 for the
+ribeye. The drinks list is non-alcoholic; the wine was replaced with a Kashmiri
+saffron kahwa.
+
+**Dish photos are self-hosted** in `assets/` rather than hotlinked, so no image
+can break later.
+
+**The client is named `supabaseClient`, not `supabase`.** The CDN bundle already
+publishes itself as the global `window.supabase`, and a top-level
+`const supabase = ...` collides with it, throwing
+`Identifier 'supabase' has already been declared` — a parse-time error that kills
+the whole file before a single line runs. See the comment in
+[`js/supabase.js`](js/supabase.js).
+
+**Security is enforced in the database, not the browser.** The JavaScript role
+check only provides a nicer redirect; the RLS policies do the real work:
+
+- A customer can read only their own orders, even calling the API directly.
+- A customer cannot update any order's status — that is admin-only.
+- A customer cannot change their own role to `admin`; there is no self-update
+  policy on `profiles` at all.
+- Menu writes are admin-only; menu reads are public.
 
 ---
 
@@ -170,18 +173,5 @@ Open the folder in VS Code and use the **Live Server** extension (right-click
 | Add / edit / delete a dish | Change appears on the customer menu |
 | Toggle a dish unavailable | It disappears from the customer menu |
 | Export CSV | File downloads with all orders |
-| Narrow the window to phone width | Grid collapses cleanly |
+| Narrow to phone width | Bootstrap grid collapses cleanly |
 | Browser console | No errors on any page |
-
----
-
-## Security notes
-
-The RLS policies in `schema.sql` do the real enforcement — the JavaScript role
-check is only there to give a nicer redirect:
-
-- A customer can **read only their own orders**, even by calling the API directly.
-- A customer **cannot update any order's status** — that's admin-only.
-- A customer **cannot change their own role** to `admin`; there is no
-  self-update policy on `profiles` at all.
-- Menu writes are admin-only; menu reads are public.
