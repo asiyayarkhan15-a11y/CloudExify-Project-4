@@ -15,38 +15,38 @@ from (values
   ('Burrata & Heirloom Tomato',
    'Creamy Puglian burrata, confit heirloom tomatoes, aged balsamic, basil oil.',
    1600.00, 'Starters',
-   'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80', true),
+   'assets/burrata.jpg', true),
 
   ('Truffle Wild Mushroom Soup',
    'Velvet forest mushroom velouté finished with black winter truffle.',
    900.00, 'Starters',
-   'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80', true),
+   'assets/mushroom-soup.jpg', true),
 
   ('Beef Tartare Royale',
    'Hand-cut tenderloin, cured egg yolk, cornichon, sourdough crisps.',
    2200.00, 'Starters',
-   'https://images.unsplash.com/photo-1432139555190-58524dae6a55?auto=format&fit=crop&w=800&q=80', true),
+   'assets/beef-tartare.jpg', true),
 
   ('Foie Gras Parfait',
    'Silken parfait, spiced pear chutney, toasted brioche.',
    3500.00, 'Starters',
-   'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=800&q=80', true),
+   'assets/foie-gras.jpg', true),
 
   -- ---- Mains -------------------------------------------------------------
   ('Wagyu Ribeye MB7',
    '280g grain-fed wagyu, bone marrow butter, triple-cooked pommes.',
    8500.00, 'Mains',
-   'https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80', true),
+   'assets/wagyu.jpg', true),
 
   ('Black Truffle Tagliatelle',
    'Hand-rolled pasta, 24-month parmesan, shaved Périgord truffle.',
    3200.00, 'Mains',
-   'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=80', true),
+   'assets/truffle-tagliatelle.jpg', true),
 
   ('Herb-Crusted Rack of Lamb',
    'New Zealand lamb, dijon herb crust, confit garlic jus, spring peas.',
    4500.00, 'Mains',
-   'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80', true),
+   'assets/lamb.jpg', true),
 
   ('Saffron Risotto Milanese',
    'Carnaroli rice, Iranian saffron, aged parmesan, gold leaf.',
@@ -56,23 +56,23 @@ from (values
   ('Duck à l''Orange',
    'Slow-roasted breast, bitter orange glaze, dauphinoise potato.',
    3800.00, 'Mains',
-   'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80', true),
+   'assets/duck.jpg', true),
 
   -- ---- Seafood -----------------------------------------------------------
   ('Butter-Poached Lobster',
    'Half Maine lobster, vanilla beurre blanc, charred leek.',
    6500.00, 'Seafood',
-   'https://images.unsplash.com/photo-1553247407-23251ce81f59?auto=format&fit=crop&w=800&q=80', true),
+   'assets/lobster.jpg', true),
 
   ('Seared Atlantic Salmon',
    'Crisp-skin fillet, dill crème fraîche, pickled fennel.',
    3500.00, 'Seafood',
-   'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=800&q=80', true),
+   'assets/salmon.jpg', true),
 
   ('Hokkaido Scallops',
    'Three seared scallops, cauliflower velouté, brown butter, capers.',
    4000.00, 'Seafood',
-   'https://images.unsplash.com/photo-1559737558-2f5a35f4523b?auto=format&fit=crop&w=800&q=80', true),
+   'assets/scallops.jpg', true),
 
   -- ---- Desserts ----------------------------------------------------------
   ('Valrhona Chocolate Fondant',
@@ -83,7 +83,7 @@ from (values
   ('Crème Brûlée Classique',
    'Madagascan vanilla custard, burnt sugar crust.',
    1000.00, 'Desserts',
-   'https://images.unsplash.com/photo-1470324161839-ce2bb6fa6bc3?auto=format&fit=crop&w=800&q=80', true),
+   'assets/creme-brulee.jpg', true),
 
   ('Pistachio & Rose Cheesecake',
    'Baked cheesecake, Iranian pistachio, rose petal jam.',
@@ -104,7 +104,7 @@ from (values
   ('Single Origin Espresso',
    'Ethiopian Yirgacheffe, hand-pulled double shot.',
    550.00, 'Beverages',
-   'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80', true)
+   'assets/espresso.jpg', true)
 
 ) as v(name, description, price, category, image_url, available)
 where not exists (select 1 from public.menu_items);
