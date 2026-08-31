@@ -59,13 +59,57 @@ via Supabase Realtime.
 
 ## Screenshots
 
-Seventeen captures of the live app are in [`screenshots/`](screenshots/), listed
-in [`screenshots/README.md`](screenshots/README.md) — eleven desktop and six
-taken on an iPhone, showing the Bootstrap grid collapsing cleanly.
+### Customer panel
 
-`08-admin-dashboard-pending.png` and `09-admin-status-updated.png` are a
-before/after pair: the same order moves from `Pending` to `Preparing` and the
-*Pending Orders* stat card recalculates from 1 to 0.
+The menu — 18 dishes with category filters, live search and price sorting.
+
+![Menu](screenshots/03-menu-dishes.png)
+
+The cart drawer — quantity steppers, per-item removal and a running total,
+persisted to `sessionStorage` so it survives a refresh.
+
+![Cart](screenshots/05-cart.png)
+
+Order history, with a live status badge on each order.
+
+![Order history](screenshots/07-my-orders-pending.png)
+
+### Admin panel
+
+Four stat cards refreshing every 30 seconds, and every order with a status
+dropdown. Note **Pending Orders: 1** and the `PENDING` badge.
+
+![Admin dashboard](screenshots/08-admin-dashboard-pending.png)
+
+The same order after the dropdown set it to `Preparing` — the badge changes and
+the stat card recalculates to **Pending Orders: 0**.
+
+![Status updated](screenshots/09-admin-status-updated.png)
+
+Menu management — create, edit, delete, and toggle availability live.
+
+![Menu management](screenshots/10-admin-menu-management.png)
+
+### Mobile — iPhone, Safari
+
+Real device captures. The grid drops to two columns, filters wrap, and the cart
+drawer goes full width.
+
+<table>
+<tr>
+<td width="33%"><img src="screenshots/13-mobile-menu.jpg" alt="Mobile menu"></td>
+<td width="33%"><img src="screenshots/15-mobile-cart.jpg" alt="Mobile cart"></td>
+<td width="33%"><img src="screenshots/17-mobile-admin-dashboard.jpg" alt="Mobile admin"></td>
+</tr>
+<tr>
+<td align="center"><sub>Menu</sub></td>
+<td align="center"><sub>Cart</sub></td>
+<td align="center"><sub>Admin dashboard</sub></td>
+</tr>
+</table>
+
+All seventeen captures are in [`screenshots/`](screenshots/), listed in
+[`screenshots/README.md`](screenshots/README.md).
 
 ---
 
