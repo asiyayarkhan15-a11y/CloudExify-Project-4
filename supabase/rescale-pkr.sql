@@ -1,13 +1,30 @@
 -- ============================================================================
--- Set the menu to realistic Pakistani upscale-restaurant prices (PKR).
+-- Localise the menu for Pakistan: PKR prices + no alcohol.
 --
--- The original seed used AED figures (68, 340, ...). Shown as PKR those read
--- as far too cheap, so this sets deliberate PKR prices in line with what a
--- high-end restaurant in Karachi / Lahore / Islamabad actually charges.
+-- 1. Replaces the wine item with a Kashmiri saffron kahwa.
+-- 2. Sets realistic PKR prices for an upscale restaurant in Karachi /
+--    Lahore / Islamabad. (The original seed used AED figures — 68, 340 — which
+--    read as absurdly cheap once the currency label changed to PKR.)
 --
--- Run once in Supabase → SQL Editor. Safe to re-run: it matches on name and
--- simply sets the same values again.
+-- Run once in Supabase → SQL Editor. Safe to re-run.
 -- ============================================================================
+
+
+-- ---------------------------------------------------------------------------
+-- STEP 1 — Swap the wine for a non-alcoholic house drink.
+-- Runs first so the price update below can match on the new name.
+-- ---------------------------------------------------------------------------
+
+update public.menu_items
+set name        = 'Kashmiri Saffron Kahwa',
+    description = 'Green tea steeped with saffron, green cardamom and slivered almonds.',
+    image_url   = 'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=80'
+where name = 'Sommelier''s Reserve Red';
+
+
+-- ---------------------------------------------------------------------------
+-- STEP 2 — Set PKR prices.
+-- ---------------------------------------------------------------------------
 
 update public.menu_items as m
 set price = v.new_price
@@ -33,14 +50,14 @@ from (values
   ('Valrhona Chocolate Fondant',     1200),
   -- Beverages --------------------------------------------------------------
   ('Single Origin Espresso',          550),
-  ('Noir Signature Mocktail',         750),
-  ('Sommelier''s Reserve Red',       2500)
+  ('Kashmiri Saffron Kahwa',          650),
+  ('Noir Signature Mocktail',         750)
 ) as v(name, new_price)
 where m.name = v.name;
 
 
 -- ---------------------------------------------------------------------------
--- Confirm — all 18 dishes with their new PKR prices.
+-- STEP 3 — Confirm. Should list 18 dishes, none alcoholic.
 -- ---------------------------------------------------------------------------
 
 select category, name, price

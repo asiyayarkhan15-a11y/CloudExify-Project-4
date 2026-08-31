@@ -91,10 +91,10 @@ from (values
    'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=80', true),
 
   -- ---- Beverages ---------------------------------------------------------
-  ('Sommelier''s Reserve Red',
-   'Glass of the cellar''s current featured Bordeaux blend.',
-   2500.00, 'Beverages',
-   'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=80', true),
+  ('Kashmiri Saffron Kahwa',
+   'Green tea steeped with saffron, green cardamom and slivered almonds.',
+   650.00, 'Beverages',
+   'https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=800&q=80', true),
 
   ('Noir Signature Mocktail',
    'Blackberry, elderflower, lime, cracked pink peppercorn.',
