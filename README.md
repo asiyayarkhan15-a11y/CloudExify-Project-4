@@ -90,9 +90,7 @@ before/after pair: the same order moves from `Pending` to `Preparing` and the
 ├── supabase/
 │   ├── schema.sql             tables, trigger, RLS policies, realtime
 │   ├── seed.sql               the 18 menu items
-│   ├── make-admin.sql         promote an account to admin
-│   ├── rescale-pkr.sql        PKR pricing + non-alcoholic drinks menu
-│   └── fix-images.sql         point dishes at the local photos
+│   └── make-admin.sql         promote an account to admin
 └── README.md
 ```
 
@@ -130,9 +128,9 @@ Configuration, as both **Site URL** and a **Redirect URL** ending in `/**`.
 ## Notes on the implementation
 
 **Localised for Pakistan.** Prices are in PKR at levels an upscale restaurant in
-Karachi would actually charge — PKR 550 for an espresso, PKR 8,500 for the
-ribeye. The drinks list is non-alcoholic; the wine was replaced with a Kashmiri
-saffron kahwa.
+Attock would actually charge — PKR 550 for an espresso, PKR 8,500 for the
+ribeye. The drinks list is entirely non-alcoholic: Kashmiri saffron kahwa, a
+signature mocktail and single origin espresso.
 
 **Dish photos are self-hosted** in `assets/` rather than hotlinked, so no image
 can break later.
