@@ -42,9 +42,9 @@ if (SUPABASE_URL.includes('YOUR-PROJECT-ID')) {
 
 /* ---- 3. Shared helpers -------------------------------------------- */
 
-const CURRENCY = 'AED';
+const CURRENCY = 'PKR';
 
-/** Format a number as a price string, e.g. money(24.5) -> "AED 24.50" */
+/** Format a number as a price string, e.g. money(24.5) -> "PKR 24.50" */
 function money(value) {
   return CURRENCY + ' ' + Number(value || 0).toFixed(2);
 }

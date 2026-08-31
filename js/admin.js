@@ -277,7 +277,7 @@ function exportOrdersCsv() {
     return;
   }
 
-  const header = ['Order ID', 'Placed At', 'Status', 'Total (AED)', 'Items'];
+  const header = ['Order ID', 'Placed At', 'Status', 'Total (PKR)', 'Items'];
   const rows = adminOrders.map((order) => {
     const items = Array.isArray(order.items) ? order.items : [];
     return [
