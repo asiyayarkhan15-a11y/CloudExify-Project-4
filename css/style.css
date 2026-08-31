@@ -279,6 +279,17 @@ a:hover { color: var(--mn-gold); }
   flex-shrink: 0;
 }
 
+/* A flex item will not shrink below its content width unless min-width is
+   cleared — without this a long dish name pushes the row wider than the
+   drawer and the panel scrolls sideways instead of truncating the name. */
+.mn-cart-row > .flex-grow-1 { min-width: 0; }
+
+/* The quantity stepper and Remove link must never be squeezed or clipped. */
+.mn-cart-row > .text-end { flex-shrink: 0; }
+
+/* Belt and braces: the cart drawer should only ever scroll vertically. */
+.mn-offcanvas .offcanvas-body { overflow-x: hidden; }
+
 .mn-qty {
   display: inline-flex;
   align-items: center;

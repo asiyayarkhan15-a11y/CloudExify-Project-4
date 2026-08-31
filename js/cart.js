@@ -104,7 +104,7 @@ function renderCart() {
     <div class="mn-cart-row">
       <img src="${escapeHtml(line.image_url || 'assets/placeholder.svg')}"
            alt="${escapeHtml(line.name)}" onerror="${IMG_FALLBACK}">
-      <div class="flex-grow-1 min-w-0">
+      <div class="flex-grow-1">
         <div class="text-truncate">${escapeHtml(line.name)}</div>
         <div class="mn-price small">${money(line.price)}</div>
       </div>
